@@ -6,33 +6,14 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { AppProvider, useAppContext } from "./context/AppContext";
+import { AppProvider, useAppContext } from "./@core/context/AppContext";
 import LoginContainer from "./modules/Auth/LoginContainer";
 import VendorDashboardView from "./modules/VendorDashboard/VendorDashboardView";
 import UserDashboardView from "./modules/UserDashboard/UserDashboardView";
 import AdminDashboardView from "./modules/AdminDashboard/AdminDashboardView";
 import HomeContainer from "./modules/Home/HomeContainer";
-
-const ProtectedRoute: React.FC<{
-  allowedRoles: string[];
-  children: React.ReactNode;
-}> = ({ allowedRoles, children }) => {
-  const { isAuthenticated, role } = useAppContext();
-
-  if (!isAuthenticated || !role) {
-    return <Navigate to="/login" replace />;
-  }
-
-
-  if (!allowedRoles.includes(role)) {
-    if (role === "admin") return <Navigate to="/admin" replace />;
-    if (role === "vendor") return <Navigate to="/vendor" replace />;
-    if (role === "user") return <Navigate to="/user" replace />;
-    return <Navigate to="/" replace />;
-  }
-
-  return <>{children}</>;
-};
+import AppLayout from "./@core/components/Layout/AppLayout";
+import ProtectedLayout from "./@core/layout";
 
 const AppRoutes: React.FC = () => {
   const { isAuthenticated, role } = useAppContext();
@@ -53,39 +34,26 @@ const AppRoutes: React.FC = () => {
               <Navigate to="/login" replace />
             )
           ) : (
-            <HomeContainer />
+            <AppLayout>
+              <HomeContainer />
+            </AppLayout>
           )
         }
       />
 
       <Route path="/login" element={<LoginContainer />} />
 
-      <Route
-        path="/vendor/*"
-        element={
-          <ProtectedRoute allowedRoles={["vendor"]}>
-            <VendorDashboardView />
-          </ProtectedRoute>
-        }
-      />
+      <Route element={<ProtectedLayout allowedRoles={["vendor", "admin"]} />}>
+        <Route path="/vendor/*" element={<VendorDashboardView />} />
+      </Route>
 
-      <Route
-        path="/admin/*"
-        element={
-          <ProtectedRoute allowedRoles={["admin"]}>
-            <AdminDashboardView />
-          </ProtectedRoute>
-        }
-      />
+      <Route element={<ProtectedLayout allowedRoles={["admin"]} />}>
+        <Route path="/admin/*" element={<AdminDashboardView />} />
+      </Route>
 
-      <Route
-        path="/user/*"
-        element={
-          <ProtectedRoute allowedRoles={["user"]}>
-            <UserDashboardView />
-          </ProtectedRoute>
-        }
-      />
+      <Route element={<ProtectedLayout allowedRoles={["user", "admin"]} />}>
+        <Route path="/user/*" element={<UserDashboardView />} />
+      </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

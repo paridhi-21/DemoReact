@@ -17,7 +17,9 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@core/*": ["src/*"]
+      "@demo-react/*":["src/*"],
+      "@core/*": ["src/@core/*"],
+      "@types/*":["src/@types/*"]
     }
   },
   "include": ["src"]

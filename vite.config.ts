@@ -7,7 +7,9 @@ export default defineConfig({
   base: '/',
   resolve: {
     alias: {
-      '@core': path.resolve(__dirname, 'src')
+      '@core': path.resolve(__dirname, 'src/@core'),
+      '@types': path.resolve(__dirname, 'src/@types'),
+      '@demo-react': path.resolve(__dirname, 'src')
     }
   }
 });

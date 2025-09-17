@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { Container, Grid, Box, Stack } from '@mui/material';
-import AppTextField from '../../components/AppTextField';
-import AppButton from '../../components/AppButton';
+import AppTextField from '../../@core/components/AppTextField';
+import AppButton from '../../@core/components/AppButton';
 import { COLORS } from '@core/constants/colors';
-import { useAppContext } from '../../context/AppContext'; // Adjust path if needed
-import AppTypo from '@core/components/AppTypo';
+import { useAppContext } from '../../@core/context/AppContext'; // Adjust path if needed
+import AppTypo from '@demo-react/@core/components/AppTypo';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const LoginView: React.FC = () => {
   const { login } = useAppContext();
   const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('amélielaurent762@gmail.com');
+  const [email, setEmail] = useState('amélielaurent762@gmail.com');
   const [password, setPassword] = useState('12345678');
+  const navigate = useNavigate();
+
 
   const handleSubmit = () => {
     login(username); // Use fullName as username for login
@@ -21,7 +24,7 @@ const LoginView: React.FC = () => {
   return (
     <Box sx={{ minHeight: '100vh', backgroundColor: COLORS.primary[300], display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Container maxWidth="xl">
-        <AppTypo appVariant="h6" sx={{ color: COLORS.grey[500], mb: 2 }}>KALAKRUTI</AppTypo>
+        <AppTypo appVariant="h6" sx={{ color: COLORS.grey[500], mb: 2 }} onClick={() => navigate("/")}>KALAKRUTI</AppTypo>
         <Box sx={{ borderRadius: 4, overflow: 'hidden', boxShadow: COLORS.grey[300] }}>
           <Grid container spacing={0} alignItems="stretch">
             {/* Form Section (Left) */}

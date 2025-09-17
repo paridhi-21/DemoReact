@@ -1,4 +1,5 @@
-import LoginContainer from "@core/modules/Auth/LoginContainer";
+import LoginContainer from "@demo-react/modules/Auth/LoginContainer";
+
 
 export default function LoginPage() {
   return <LoginContainer />;

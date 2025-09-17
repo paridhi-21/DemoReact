@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useAppContext } from "../../context/AppContext";
+import { useAppContext } from "../../@core/context/AppContext";
 import { useNavigate } from "react-router-dom";
 import LoginView from "./LoginView";
 

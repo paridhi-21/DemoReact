@@ -2,19 +2,19 @@
 
 import React from "react";
 import { Container, Grid, Button, Box } from "@mui/material";
-import AppLayout from "@core/components/Layout/AppLayout";
 import { COLORS } from "@core/constants/colors";
-import { useAppContext } from "@core/context/AppContext";
-import AppTypo from "@core/components/AppTypo";
+import AppTypo from "@demo-react/@core/components/AppTypo";
+import AppLayout from "@demo-react/@core/components/Layout/AppLayout";
+import { useAppContext } from "@demo-react/@core/context/AppContext";
 
 const HomePage: React.FC = () => {
-    const { isAuthenticated, role } = useAppContext(); // ✅ use context here
+    const { isAuthenticated, role } = useAppContext();
    console.log("isAuthenticated :",isAuthenticated);
    console.log("role :",role);
    
     
   return (
-    <AppLayout>
+    // <AppLayout>
       <Container maxWidth="lg">
         <Box
           sx={{
@@ -186,7 +186,7 @@ const HomePage: React.FC = () => {
         </Box>
 
       </Container>
-    </AppLayout>
+    // </AppLayout>
   );
 };
 

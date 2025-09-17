@@ -2,9 +2,9 @@
 
 import React from "react";
 import { Typography, Container, Grid, Box, Button } from "@mui/material";
-import AppLayout from "@core/components/Layout/AppLayout";
-import { useAppContext } from "@core/context/AppContext";
 import { COLORS } from "@core/constants/colors";
+import AppLayout from "@demo-react/@core/components/Layout/AppLayout";
+import { useAppContext } from "@demo-react/@core/context/AppContext";
 
 const DashboardPage: React.FC = () => {
   const { role } = useAppContext();

@@ -1,4 +1,4 @@
-import { ThemeColors } from "../types/theme";
+import { ThemeColors } from "@demo-react/@types/theme";
 
 export const COLORS: ThemeColors = {
   primary: {

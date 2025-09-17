@@ -3,10 +3,10 @@
 import React from "react";
 import { AppBar, Toolbar, Button, Box, Drawer, List, ListItem, ListItemButton, ListItemText, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAppContext } from "@core/context/AppContext";
 import { COLORS } from "@core/constants/colors";
 import AppTypo from "../AppTypo";
-// Define Role type including "guest"
+import { useAppContext } from "@demo-react/@core/context/AppContext";
+
 type Role = "guest" | "user" | "vendor" | "admin";
 
 interface SidebarItem {
@@ -14,7 +14,6 @@ interface SidebarItem {
   path: string;
 }
 
-// Ensure the record has all Roles
 const sidebarItemsByRole: Record<Role, SidebarItem[]> = {
   guest: [
     { label: "Home", path: "/" },
@@ -34,8 +33,8 @@ const sidebarItemsByRole: Record<Role, SidebarItem[]> = {
   ],
   admin: [
     { label: "Admin Dashboard", path: "/admin" },
-    { label: "Users", path: "/user" },
-    { label: "Vendors", path: "/vendor" },
+    { label: "Users", path: "/admin/users" },
+    { label: "Vendors", path: "/admin/vendors" },
     { label: "Reports", path: "/admin/reports" },
     { label: "Profile", path: "/admin/profile" },
   ],

@@ -1,4 +1,4 @@
-import VendorDashboardContainer from "@core/modules/VendorDashboard/VendorDashboardContainer";
+import VendorDashboardContainer from "@demo-react/modules/VendorDashboard/VendorDashboardContainer";
 
 export default function HomePage() {
     return <VendorDashboardContainer />;

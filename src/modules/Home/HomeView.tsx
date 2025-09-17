@@ -4,7 +4,7 @@ import React from "react";
 import { Container, Grid, Button, Box } from "@mui/material";
 import { COLORS } from "@core/constants/colors";
 import AppTypo from "@demo-react/@core/components/AppTypo";
-import AppLayout from "@demo-react/@core/components/Layout/AppLayout";
+// import AppLayout from "@demo-react/@core/components/Layout/AppLayout";
 import { useAppContext } from "@demo-react/@core/context/AppContext";
 
 const HomePage: React.FC = () => {
